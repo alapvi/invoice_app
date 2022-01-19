@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_invoice_app_product_model,invoice_app.product_model,model_invoice_app_product_model,base.group_user,1,1,1,1
+access_invoice_app_client_model,invoice_app.client_model,model_invoice_app_client_model,base.group_user,1,1,1,1
+access_invoice_app_invoce_model,invoice_app.invoice_model,model_invoice_app_invoice_model,base.group_user,1,1,1,1
+access_invoice_app_line_model,invoice_app.line_model,model_invoice_app_line_model,base.group_user,1,1,1,1
