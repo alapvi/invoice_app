@@ -64,14 +64,18 @@
       <field name="model">invoice_app.invoice_model</field>
       <field name="arch" type="xml">
         <form>
+          <header>
+            <button name="confirmInvoice" type="object" string="Confirm" class="oe_highlight" states="D"/>         
+            <field name="state" widget="statusbar"></field>
+          </header>
           <sheet>
             <group>
-              <field name="reference"/>
-              <field name="date"/>
+              <field name="reference" attrs="{'readonly': [('state','=', 'C')]}"/>
+              <field name="date" />
               <field name="base"/>
               <field name="vat"/>
               <field name="total"/>
-              <field name="lines_ids">
+              <field name="lines_ids" attrs="{'readonly': [('state','=', 'C')]}">
                 <form>
                   <group>
                     <field name="product_id"/>
@@ -80,7 +84,7 @@
                 </form>
               
               </field>
-              <field name="client_id"/>
+              <field name="client_id" attrs="{'readonly': [('state','=', 'C')]}"/>
             </group>
         </sheet>
         </form>
