@@ -31,6 +31,7 @@ class InvoiceModel(models.Model):
                          rec.product_id.stock -= rec.quantity
                     else:
                          self._cr.rollback()
+                         self._cr.autocommit(True)
                          raise ValidationError("There is no Stock of "+rec.product_id.name+"!")          
           self._cr.commit()
           self._cr.autocommit(True)
