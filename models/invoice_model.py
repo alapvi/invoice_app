@@ -39,6 +39,8 @@ class InvoiceModel(models.Model):
 
      
      def _get_id(self):
+          if len(self.env['invoice_app.invoice_model'].search([])) == 0:
+               return 1
           return (self.env['invoice_app.invoice_model'].search([])[-1].id + 1)
           
 
