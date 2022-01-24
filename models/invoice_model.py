@@ -23,13 +23,17 @@ class InvoiceModel(models.Model):
 
      def confirmInvoice(self):
           self.ensure_one()
+          self._cr.autocommit(False)
           if self.state == "D":
                self.state = "C"
                for rec in self.lines_ids:
                     if rec.quantity <= rec.product_id.stock:
                          rec.product_id.stock -= rec.quantity
                     else:
+                         self._cr.rollback()
                          raise ValidationError("There is no Stock of "+rec.product_id.name+"!")          
+          self._cr.commit()
+          self._cr.autocommit(True)
           return True
 
      
